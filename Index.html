@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamForge | Digital Video Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h1 class="logo-loader">DreamForge</h1>
+            <p>Iniciando motores de renderizado...</p>
+        </div>
+    </div>
+
+    <div id="app" class="hidden">
+        <header>
+            <div class="brand">
+                <span class="logo-icon">▲</span>
+                <span class="logo-text">DreamForge <small>v2.0</small></span>
+            </div>
+            <nav>
+                <button class="btn-secondary">Proyectos</button>
+                <button id="exportBtn" class="btn-primary">EXPORTAR MASTER</button>
+            </nav>
+        </header>
+
+        <main class="editor-container">
+            <aside class="sidebar">
+                <div class="section-title">ASSETS</div>
+                <div id="drop-zone" class="drop-area">
+                    <span>+</span>
+                    <p>Arrastra archivos</p>
+                    <input type="file" id="fileInput" hidden multiple accept="video/*,image/*">
+                </div>
+                <div id="asset-list" class="asset-grid"></div>
+            </aside>
+
+            <section class="viewer-section">
+                <div class="monitor">
+                    <canvas id="previewCanvas"></canvas>
+                    <div class="monitor-controls">
+                        <button id="playBtn">▶</button>
+                        <div id="timecode">00:00:00:00</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-area">
+                    <div class="timeline-header">
+                        <span>Timeline</span>
+                        <div class="zoom-controls">− | +</div>
+                    </div>
+                    <div id="layers-container" class="layers-scroll">
+                        </div>
+                </div>
+            </section>
+
+            <aside class="inspector">
+                <div class="section-title">EFECTOS Y AJUSTES</div>
+                <div class="control-group">
+                    <label>Filtro de Capa</label>
+                    <select id="masterFilter">
+                        <option value="none">Original</option>
+                        <option value="grayscale(1)">Cinematográfico B/N</option>
+                        <option value="sepia(0.5) contrast(1.2)">Aura Retro</option>
+                        <option value="hue-rotate(180deg)">Psicodélico</option>
+                        <option value="brightness(1.5) saturate(1.8)">Vibrancia Max</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Opacidad</label>
+                    <input type="range" min="0" max="100" value="100">
+                </div>
+                <div class="export-status" id="statusText">Listo para forjar</div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="editor.js"></script>
+</body>
+</html>
